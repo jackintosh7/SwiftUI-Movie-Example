@@ -1,6 +1,6 @@
 //
 //  API+Movies.swift
-//  Wipfli Challenge
+//  SwiftUI-Movies-Example
 //
 //  Created by Jack Higgins on 1/27/21.
 //
