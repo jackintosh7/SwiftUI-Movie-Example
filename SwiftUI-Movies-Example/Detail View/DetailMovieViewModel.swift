@@ -22,7 +22,6 @@ class DetailMovieViewModel: ObservableObject {
             switch result {
             case .success(let movie):
                 self.movie = movie
-                self.objectWillChange.send()
             case .failure(let error):
                 print("error", error)
             }
