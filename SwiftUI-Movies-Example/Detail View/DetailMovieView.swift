@@ -23,10 +23,10 @@ struct DetailMovieView: View {
             ScrollView {
                 if let movie = viewModel.movie {
                     HStack {
-                    Text(movie.title)
-                        .font(.title)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
+                        Text(movie.title)
+                            .font(.title)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                         Button {
                             self.presentationMode.wrappedValue.dismiss()
@@ -63,82 +63,28 @@ struct DetailMovieView: View {
                         
                         VStack(alignment: .leading, spacing: 20) {
                             MovieTextView(property: "Year:", text: movie.year)
+                            MovieTextView(property: "Rated:", text: movie.rated)
+                            MovieTextView(property: "Runtime:", text: movie.runtime)
+                            MovieTextView(property: "IMBD Rating:", text: movie.imdbRating)
                             
-                            if let rated = movie.rated {
-                                MovieTextView(property: "Rated:", text:rated)
-                            } else {
-                                MovieTextView(property: "Rated:", text: "-")
-                            }
-                            
-                            if let runtime = movie.runtime {
-                                MovieTextView(property: "Runtime:", text: runtime)
-                            } else {
-                                MovieTextView(property: "Runtime:", text: "-")
-                            }
-                            
-                            if let imdbRating = movie.imdbRating {
-                                MovieTextView(property: "IMBD Rating:", text: imdbRating)
-                            } else {
-                                MovieTextView(property: "IMBD Rating::", text: "-")
-                            }
                         }
                         .padding(.leading)
                         Spacer()
                     }
-
+                    
                     Divider()
                         .padding(.top)
                         .padding(.bottom)
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        
-                        if let genre = movie.genre {
-                            MovieTextView(property: "Genre:", text: genre)
-                        } else {
-                            MovieTextView(property: "Genre:", text: "-")
-                        }
-                                                
-                        if let plot = movie.plot {
-                            MovieTextView(property: "Plot:", text: plot)
-                        } else {
-                            MovieTextView(property: "Plot:", text: "-")
-                        }
-                        
-                        if let actors = movie.actors {
-                            MovieTextView(property: "Actors:", text: actors)
-                        } else {
-                            MovieTextView(property: "Actors:", text: "-")
-                        }
-
-                        if let director = movie.director {
-                            MovieTextView(property: "Director:", text: director)
-                        } else {
-                            MovieTextView(property: "Director:", text: "-")
-                        }
-
-                        if let writer = movie.writer {
-                            MovieTextView(property: "Writer:", text: writer)
-                        } else {
-                            MovieTextView(property: "Writer:", text: "-")
-                        }
-                        
-                        if let language = movie.language {
-                            MovieTextView(property: "Language:", text: language)
-                        } else {
-                            MovieTextView(property: "Language:", text: "-")
-                        }
-                        
-                        if let country = movie.country {
-                            MovieTextView(property: "Country:", text: country)
-                        } else {
-                            MovieTextView(property: "Country:", text: "-")
-                        }
-
-                        if let released = movie.released {
-                            MovieTextView(property: "Released:", text: released)
-                        } else {
-                            MovieTextView(property: "Released:", text: "-")
-                        }
+                        MovieTextView(property: "Genre:", text: movie.genre)
+                        MovieTextView(property: "Plot:", text: movie.plot)
+                        MovieTextView(property: "Actors:", text: movie.actors)
+                        MovieTextView(property: "Director:", text: movie.director)
+                        MovieTextView(property: "Writer:", text: movie.writer)
+                        MovieTextView(property: "Language:", text: movie.language)
+                        MovieTextView(property: "Country:", text: movie.country)
+                        MovieTextView(property: "Released:", text: movie.released)
                     }
                 }
                 Spacer()
@@ -153,16 +99,16 @@ struct DetailMovieView: View {
 }
 
 struct MovieTextView: View {
-
-    @State var property: String
-    @State var text: String
+    
+    var property: String
+    var text: String?
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(property)
                 .font(.subheadline)
                 .foregroundColor(.gray)
-            Text(text)
+            Text(text ?? "-")
                 .padding(.bottom, 5)
         }
     }
