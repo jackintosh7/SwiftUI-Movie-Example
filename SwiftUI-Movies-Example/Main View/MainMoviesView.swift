@@ -16,20 +16,21 @@ struct MainMoviesView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 if viewModel.movieBuckets.isEmpty {
-                    
+                    //Handle loading and error states
                 } else {
-                    List {
-                        ForEach(viewModel.movieBuckets, id: \.self) { bucket in
-                            VStack {
-                                TileView(bucket: bucket)
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.movieBuckets, id: \.self) { bucket in
+                                VStack {
+                                    TileView(bucket: bucket)
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                .listRowInsets(EdgeInsets())
+                                .background(Color.white)
                             }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                            .listRowInsets(EdgeInsets())
-                            .background(Color.white)
                         }
+                        .padding(.top, 5)
                     }
-                    .listStyle(PlainListStyle())
-                    .padding(.top, 5)
                 }
             }.navigationBarTitle("Movies", displayMode: .large)
         }
