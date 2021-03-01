@@ -7,7 +7,7 @@ Basic application that searches the **omdbapi** for common movie series - Harry 
  - Alamofire (Networking)
  - Kingfisher (Downloading images)
 
-Contains a `List` with horizontal `ScrollView` to display movie poster images, when selected, pass movie object to detail view where an API call will fetch the full details for a given movie. 
+Contains a `LazyVStack` with horizontal `ScrollView` to display movie poster images, when selected, pass movie object to detail view where an API call will fetch the full details for a given movie. 
 
 **Goal:** Demonstrate core SwiftUI function while reusing a networking/data layer from [this](https://github.com/jackintosh7/Swift-Movie-Search-Challenge) UIKit project that searches for movies by title. 
 
